@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            display: flex;
+        }
+        div {
+            position: relative;
+            height:40vh;
+            width:40vw
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <canvas id="myChartLine"></canvas>
+    </div>
+
+    <div>
+        <canvas id="myChartBars"></canvas>
+    </div>
+</body>
+<script>   
+  //grafico de linhas
+    const labelsLine = [
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00'
+    ];
+    
+    const data = {
+        labels: labelsLine,
+        datasets: [{
+            label: 'Temperatura',
+            data: [30, 29, 28, 25, 22, 23],
+            fill: false,
+            borderColor: 'rgb(255, 96, 208)',
+            tension: 0.1
+        },
+        {
+            label: 'Umidade',
+            data: [80, 82, 80, 85, 80, 83],
+            fill: false,
+            borderColor: 'rgb(80, 208, 255)',
+            tension: 0.1
+        }]
+    };
+    
+    const configLine = {
+        type: 'line',
+        data: data,
+        options: {}
+    };
+ 
+    //grafico de barras
+    const labelsBars = [
+        'Janeiro',
+        'Fevereiro',
+        'Março',
+        'Abril',
+        'Maio',
+        'Junho'
+    ];
+    
+    const data2 = {
+        labels: labelsBars,
+        datasets: [{
+            label: 'Temperatura Média',
+            data: [22, 24, 27, 23, 20, 18],
+            backgroundColor: 'rgba(255, 96, 208, 0.5)',
+            borderColor: 'rgb(255, 96, 208)',
+            tension: 0.1
+        },
+        {
+            label: 'Umidade Média',
+            data: [90, 89, 93, 87, 88, 82],
+            backgroundColor: 'rgba(80, 208, 255, 0.5)',
+            borderColor: 'rgb(80, 208, 255)',
+            tension: 0.1
+        }]
+    };
+    
+    const configBars = {
+        type: 'bar',
+        data: data2,
+        options: {}
+    };
+
+    
+    const myChartLine = new Chart (
+        document.getElementById('myChartLine'),
+        configLine
+    )
+
+        const myChartBars = new Chart (
+        document.getElementById('myChartBars'),
+        configBars
+    )
+</script>
+</html>
